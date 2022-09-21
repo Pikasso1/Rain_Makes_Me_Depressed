@@ -1,7 +1,10 @@
-<p>Berlin or sum shit</p>
-<p>Latitude: {{weatherInfo.latitude}}</p>
-<p>Latitude: {{weatherInfo.longitude}}</p>
-<p style="margin-top: 10px;">Current time: {{weatherInfo.current_weather.time}}</p>
-<p>Temperature: {{weatherInfo.current_weather.temperature}} °C</p>
-<p>Windspeed: {{weatherInfo.current_weather.windspeed}}</p>
-<p>Winddirection: {{weatherInfo.current_weather.winddirection}}</p>
+<div class="datagrid">
+    <div class="info">
+        <div class>Berlin or sum shit:   Latitude: {{weatherInfo.latitude}}  Latitude: {{weatherInfo.longitude}}</div>
+    </div>
+    <div>Current time: {{weatherInfo.current_weather.time}}</div>
+    <div>Temperature: {{weatherInfo.current_weather.temperature}} °C</div>
+    <div class="windspeed">Windspeed: {{weatherInfo.current_weather.windspeed}}</div>
+    <div class="winddirection">Winddirection: {{weatherInfo.current_weather.winddirection}}</div>
+</div>
+
