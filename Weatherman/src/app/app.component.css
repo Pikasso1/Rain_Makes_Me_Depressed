@@ -12,7 +12,6 @@
 
   .layout > div {
     background-color: salmon;
-    border-radius: 25px;
     text-align: center;
     text-align-last: center;
   }

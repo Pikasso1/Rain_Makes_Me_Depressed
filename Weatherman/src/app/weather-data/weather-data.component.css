@@ -4,14 +4,6 @@
     grid-template-rows: repeat(3, 1fr);
     gap: 5px;
 }
-.datagrid > div {
-    /* SHIT FUCKING WORKS */
-    background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aee3c44a-3c6c-4186-a699-e5408bb67c0c/dbe5k2r-a5622140-ff73-4ee5-bab0-6575f30b0770.png/v1/fill/w_398,h_250,q_70,strp/19512055_309552549473128_2058408051_n__1__by_gasoline_furry_succ_dbe5k2r-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Mzk5IiwicGF0aCI6IlwvZlwvYWVlM2M0NGEtM2M2Yy00MTg2LWE2OTktZTU0MDhiYjY3YzBjXC9kYmU1azJyLWE1NjIyMTQwLWZmNzMtNGVlNS1iYWIwLTY1NzVmMzBiMDc3MC5wbmciLCJ3aWR0aCI6Ijw9NjM2In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.FDvvEPLt5iWTX8fPuJ-aGgP-ifeiy5k0PPpv0O4GMgs);
-    margin-top: 5px;
-    height: 245px;
-    outline: black solid 2px;
-    border-radius: 15px;
-}
 
 .info {
     grid-row: 1;
