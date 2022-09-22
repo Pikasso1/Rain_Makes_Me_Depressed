@@ -3,7 +3,33 @@
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: 1fr;
 }
-.weatherman {
+.weathermanbox {
     grid-column: 1;
     grid-row: 1;
+    height: 50px;
+    background-color: #447EEF;
+
+
 }
+.weatherman {
+    font-size: 38px;
+    position:relative; left: 75px;
+
+}
+.iconsmall {
+    transform:scale(0.04);
+    position:relative; left: 35px;
+    position:fixed; top: -225px;
+}
+.buttonsize {
+
+    position:relative; left: 35px;
+    position:fixed; top: -225px;
+    transform:scale(0.04);
+}
+.button {
+    background-color: #447EEF;
+    border: none;
+    display: inline-block;
+  }
+

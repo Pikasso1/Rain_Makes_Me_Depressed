@@ -12,8 +12,7 @@
 
   .layout > div {
     background-color: salmon;
-    text-align: center;
-    text-align-last: center;
+
   }
 
   .date {
