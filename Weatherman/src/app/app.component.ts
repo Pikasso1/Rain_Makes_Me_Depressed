@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Weatherman';
+  lat = ""
+  long = ""
+  weather = 0;
+
+  onClick(){
+    console.log(this.lat + this.long);
+  }
 }
+
