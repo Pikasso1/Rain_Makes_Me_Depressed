@@ -1,0 +1,50 @@
+div {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+
+.black {
+    height: 2vh;
+    width: 4vw;
+    background-color: rgb(0, 0, 0);;
+    border-radius: 100px;
+    margin: 0 20px;
+}
+
+.blue {
+    height: 2vh;
+    width: 4vw;
+    background-color: rgb(18, 49, 129);;
+    border-radius: 100px;
+    margin: 0 20px;
+}
+
+
+.arrowline {
+    height: 1.5vh;
+    width: 4vw;
+    background-color: rgb(0, 0, 0);;
+    border-radius: 100px;
+    margin: 0 20px;
+}
+
+.arrowtop {
+    transform: rotate(135deg); 
+    height: 1.5vh;
+    width: 1.5vw;    
+    background-color: rgb(0, 0, 0);;
+    border-radius: 100px;
+    margin: 0 20px;
+}
+
+.arrowbottom {
+    transform: rotate(45deg); 
+    height: 1.5vh;
+    width: 1.5vw;    
+    background-color: rgb(0, 0, 0);;
+    border-radius: 100px;
+    margin: 0 20px;
+}
+
