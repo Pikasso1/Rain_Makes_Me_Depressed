@@ -6,16 +6,16 @@ div {
 
 
 .black {
-    height: 10px;
-    width: 50px;
+    height: 2vh;
+    width: 4vw;
     background-color: rgb(0, 0, 0);;
     border-radius: 100px;
     margin: 0 20px;
 }
 
 .blue {
-    height: 10px;
-    width: 50px;
+    height: 2vh;
+    width: 4vw;
     background-color: rgb(18, 49, 129);;
     border-radius: 100px;
     margin: 0 20px;
@@ -23,8 +23,8 @@ div {
 
 
 .arrowline {
-    height: 7px;
-    width: 50px;
+    height: 1.5vh;
+    width: 4vw;
     background-color: rgb(0, 0, 0);;
     border-radius: 100px;
     margin: 0 20px;
@@ -32,8 +32,8 @@ div {
 
 .arrowtop {
     transform: rotate(135deg); 
-    height: 7px;
-    width: 15px;    
+    height: 1.5vh;
+    width: 1.5vw;    
     background-color: rgb(0, 0, 0);;
     border-radius: 100px;
     margin: 0 20px;
@@ -41,8 +41,8 @@ div {
 
 .arrowbottom {
     transform: rotate(45deg); 
-    height: 7px;
-    width: 15px;    
+    height: 1.5vh;
+    width: 1.5vw;    
     background-color: rgb(0, 0, 0);;
     border-radius: 100px;
     margin: 0 20px;
