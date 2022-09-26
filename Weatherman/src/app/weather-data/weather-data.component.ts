@@ -1,9 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, pipe } from "rxjs"
-import { map } from "rxjs/operators"
-import { CurrentWeatherInformation, OpenMeteo } from "./weather-information"
-
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from "rxjs"
+import { Results, GeocodingPain, OpenMeteo } from "./weather-information"
 @Component({
   selector: 'app-weather-data',
   templateUrl: './weather-data.component.html',
@@ -17,7 +15,7 @@ export class WeatherDataComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.requester.getData().subscribe(response =>{
+    this.requester.getWeatherData("Berlin").subscribe(response =>{
       this.weatherInfo.latitude = response.latitude;
       this.weatherInfo.longitude = response.longitude;
       this.weatherInfo.current_weather = response.current_weather;
@@ -31,10 +29,38 @@ export class WeatherDataComponent implements OnInit {
   providedIn: 'root'
 })
 export class GetRequestService {
-  constructor(private http: HttpClient) {}
+  location: GeocodingPain;
+  coordinates: Results;
 
-  public getData(): Observable<OpenMeteo> {
-    const url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true';
-    return this.http.get<OpenMeteo>(url);
+  constructor(private http: HttpClient) {
+    this.location = {} as GeocodingPain;
+    this.coordinates = {} as Results;
+  }
+
+  public getWeatherData(name: string): Observable<OpenMeteo> {
+    let lat = 0;
+    let long = 0;
+
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("latitude", 50);
+    queryParams = queryParams.append("longitude", 50);
+    queryParams = queryParams = queryParams.append("current_weather",true);
+
+    const url = "https://api.open-meteo.com/v1/forecast";
+    const test = this.http.get<OpenMeteo>(url, {params:queryParams});
+    console.log(test);
+    return test;
+  }
+
+  public getCoordinates(name: string): Observable<GeocodingPain> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("name", name);
+    queryParams = queryParams.append("count", 1);
+
+    const url = "https://geocoding-api.open-meteo.com/v1/search";
+
+    const test = this.http.get<GeocodingPain>(url, {params:queryParams});
+    console.log(test);
+    return test;
   }
 }
