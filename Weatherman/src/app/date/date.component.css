@@ -13,17 +13,17 @@
 }
 .weatherman {
     font-size: 38px;
-    position:relative; left: 75px;
+    position:fixed; left: 75px;
 
 }
 .iconsmall {
     transform:scale(0.04);
-    position:relative; left: 35px;
+    position:fixed; left: 35px;
     position:fixed; top: -225px;
 }
 .buttonsize {
 
-    position:relative; left: 35px;
+    position:fixed; left: 35px;
     position:fixed; top: -225px;
     transform:scale(0.04);
 }
@@ -31,5 +31,18 @@
     background-color: #447EEF;
     border: none;
     display: inline-block;
-  }
+}
+.datebox {
+    grid-row: 2/4;
+    grid-column: 1;
+    background-color: rgb(241, 241, 241);
+}
+
+.weatherdate {
+    font-size: 16px;
+    padding: 0px 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 12px;
+
+}
 
