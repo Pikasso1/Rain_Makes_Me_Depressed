@@ -1,10 +1,35 @@
 <div class="datagrid">
-    <div class="info">
-        <div class>Berlin or sum shit:   Latitude: {{weatherInfo.latitude}}  Longitude: {{weatherInfo.longitude}}</div>
+    <form class="searchField" action="">
+        <div class="inputCity">
+            <label for="city">City Name</label>
+            <input type="city" id="city" name="city">
+        </div>
+        <div class="inputTime">
+            <label for="time">Enter time for weatherforcast: </label>
+            <input type="time" id="time" name="time">
+        </div>
+        <button class="submitButton" type="submit">Get Weather</button>
+    </form>
+            <!--
+            Berlin or sum shit:   Latitude: {{weatherInfo.latitude}}  Longitude: {{weatherInfo.longitude}}
+            <button>test</button> 
+            -->
+
+    <div class="weatherDataGrid">
+        <div class="temperature">
+            <p>Temperature: {{weatherInfo.current_weather.temperature}} °C</p>
+        </div>
+        <div class="downfall">
+            <p>Current time: {{weatherInfo.current_weather.time}}</p>
+        </div>
+
+        <div class="windspeed">
+            <p>Windspeed: {{weatherInfo.current_weather.windspeed}} km/t</p>
+        </div>
+        <div class="winddirection">
+            <!-- WeatherCompass -->
+            <p>Winddirection: {{weatherInfo.current_weather.winddirection}}</p>
+        </div>
     </div>
-    <div>Current time: {{weatherInfo.current_weather.time}}</div>
-    <div>Temperature: {{weatherInfo.current_weather.temperature}} °C</div>
-    <div class="windspeed">Windspeed: {{weatherInfo.current_weather.windspeed}}</div>
-    <div class="winddirection">Winddirection: {{weatherInfo.current_weather.winddirection}}</div>
 </div>
 
