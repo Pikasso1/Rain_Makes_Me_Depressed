@@ -5,7 +5,7 @@
 }
 .weathermanbox {
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 1/2;
     height: 50px;
     background-color: #447EEF;
 
@@ -15,11 +15,6 @@
     font-size: 38px;
     position:fixed; left: 75px;
 
-}
-.iconsmall {
-    transform:scale(0.04);
-    position:fixed; left: 35px;
-    position:fixed; top: -225px;
 }
 .buttonsize {
 
@@ -43,6 +38,7 @@
     padding: 0px 20px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 12px;
+    border-width: 2px;
 
 }
 
