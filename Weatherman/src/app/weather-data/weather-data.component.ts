@@ -2,6 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from "rxjs"
 import { Results, GeocodingPain, OpenMeteo } from "./weather-information"
+import * as AnimeJS from "animejs"
 import { FormControl } from '@angular/forms'; //fuck you, break everything like a fucking dipshit
 
 @Component({
@@ -25,6 +26,18 @@ export class WeatherDataComponent implements OnInit {
       console.log(this.weatherInfo);
     })
   }
+  ngAfterViewChecked(): void {
+    var box = document.querySelector("#animejsBox");
+    console.log(box);
+    
+    AnimeJS({
+      targets: box,
+      opacity: [0,1],
+      backgroundcolor: "#FFFFFF",
+      translateX: 300,
+      duration: 800
+    });
+  }
 }
 
 @Injectable({
@@ -42,6 +55,9 @@ export class GetRequestService {
   public getWeatherData(name: string): Observable<OpenMeteo> {
     let lat = 0;
     let long = 0;
+
+    //here
+    //getCoordinates() => lat long
 
     let queryParams = new HttpParams();
     queryParams = queryParams.append("latitude", 50);
