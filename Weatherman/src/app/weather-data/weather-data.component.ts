@@ -2,6 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from "rxjs"
 import { Results, GeocodingPain, OpenMeteo } from "./weather-information"
+import * as AnimeJs from "animejs"
 import { FormControl } from '@angular/forms'; //fuck you, break everything like a fucking dipshit
 
 @Component({
