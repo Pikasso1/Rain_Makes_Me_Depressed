@@ -1,7 +1,18 @@
 div {
     display: flex;
-    padding: 10px;
-    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+
+p {
+    font-size: 37.5px;
+    text-align: center;
+}
+
+.p2 {
+    font-size: 16.5px;
+    text-align: center;
 }
 
 
@@ -30,6 +41,14 @@ div {
     margin: 0 20px;
 }
 
+
+.clickable {
+    height: 6vh;
+    width: 4.75vw;
+    cursor: pointer;
+    background-color: rgba(27, 141, 175, 0);;
+}
+
 .arrowtop {
     transform: rotate(135deg); 
     height: 1.5vh;
@@ -47,4 +66,5 @@ div {
     border-radius: 100px;
     margin: 0 20px;
 }
+
 
