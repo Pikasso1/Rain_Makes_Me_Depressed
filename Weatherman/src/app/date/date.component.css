@@ -2,8 +2,45 @@
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: 1fr;
+    height: 100%;
+}
+.weathermanbox {
+    grid-column: 1;
+    grid-row: 1/2;
+    height: 100%;
+    background-color: #447EEF;
+
+
 }
 .weatherman {
-    grid-column: 1;
-    grid-row: 1;
+    font-size: 38px;
+    position:fixed; left: 75px; top: 0.6%;
+
 }
+.buttonsize {
+
+    position:fixed; left: 35px;
+    position:fixed; top: -225px;
+    transform:scale(0.04);
+}
+.button {
+    background-color: #447EEF;
+    border: none;
+    display: inline-block;
+}
+.datebox {
+    grid-row: 2/4;
+    grid-column: 1;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+}
+
+.weatherdate {
+    font-size: 16px;
+    padding: 0px 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 12px;
+    border-width: 2px;
+    position:fixed; top: 7.5%;
+}
+

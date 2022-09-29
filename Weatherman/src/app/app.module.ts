@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherDataComponent } from './weather-data/weather-data.component';
 import { DateComponent } from './date/date.component';
+import { MapComponent } from './map/map.component';
 import { SuggestionsComponent } from './suggestions/suggestions.component';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SuggestionsComponent } from './suggestions/suggestions.component';
     AppComponent,
     WeatherDataComponent,
     DateComponent,
-    SuggestionsComponent
+    SuggestionsComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
