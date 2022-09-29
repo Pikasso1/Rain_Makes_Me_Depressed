@@ -33,6 +33,12 @@
     grid-column: 1;
     background-color: rgb(255, 255, 255);
     height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.datebox > div {
+    margin: auto;
+    padding: 10px;
 }
 
 .weatherdate {
@@ -41,6 +47,5 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 12px;
     border-width: 2px;
-    position:fixed; top: 7.5%;
 }
 
