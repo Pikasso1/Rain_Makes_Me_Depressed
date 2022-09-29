@@ -71,7 +71,6 @@ fullDate: string[];
         currentDay = weekday[currentTimeDate.getDay() + i - 7];
       }
       this.fullDate[i] = `${currentDay} d. ${currentDate}`;
-      console.log(this.fullDate[i]);
     }
   }
 
