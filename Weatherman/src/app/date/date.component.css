@@ -22,6 +22,7 @@
     position:fixed; left: 35px;
     position:fixed; top: -225px;
     transform:scale(0.04);
+    cursor: pointer;
 }
 .button {
     background-color: #447EEF;
@@ -47,5 +48,6 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 12px;
     border-width: 2px;
+    cursor: pointer;
 }
 
