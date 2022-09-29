@@ -1,6 +1,5 @@
 div {
     display: flex;
-    padding: 20px;
     text-align: center;
 }
 
@@ -67,4 +66,33 @@ p {
     margin: 0 20px;
 }
 
+.suggestionsFlexBox {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.textStuff {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+.textStuff > div {
+    align-self: center;
+    margin: auto;
+    padding: 10px;
+}
+
+.arrowsAndDifficulity {
+    display: flex;
+    align-self: center;
+    align-content: center;
+    width: 75%
+}
+
+.arrowsAndDifficulity > div {
+    align-self: center;
+    margin: auto;
+    padding: 10px;
+}
