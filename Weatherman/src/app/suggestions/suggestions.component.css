@@ -31,39 +31,10 @@ p {
     margin: 0 20px;
 }
 
-
-.arrowline {
-    height: 1.5vh;
-    width: 4vw;
-    background-color: rgb(0, 0, 0);;
-    border-radius: 100px;
-    margin: 0 20px;
-}
-
-
 .clickable {
     height: 6vh;
-    width: 4.75vw;
+    width: 4vw;
     cursor: pointer;
-    background-color: rgba(27, 141, 175, 0);;
-}
-
-.arrowtop {
-    transform: rotate(135deg); 
-    height: 1.5vh;
-    width: 1.5vw;    
-    background-color: rgb(0, 0, 0);;
-    border-radius: 100px;
-    margin: 0 20px;
-}
-
-.arrowbottom {
-    transform: rotate(45deg); 
-    height: 1.5vh;
-    width: 1.5vw;    
-    background-color: rgb(0, 0, 0);;
-    border-radius: 100px;
-    margin: 0 20px;
 }
 
 .suggestionsFlexBox {
