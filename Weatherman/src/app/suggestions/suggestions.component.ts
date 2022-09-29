@@ -11,5 +11,16 @@ export class SuggestionsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
+
+var ActivityTitle = "Problem occured loading title"
+var activityExplanation = "Problem occured loading explanation text"
+var selectedActivity = 0;
+
+
+
+
+
+
+
+
