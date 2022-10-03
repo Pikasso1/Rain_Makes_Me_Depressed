@@ -12,7 +12,7 @@ import { FormControl } from '@angular/forms'; //fuck you, break everything like 
 export class WeatherDataComponent implements OnInit {
   weatherInfo: OpenMeteo;
 
-  constructor(private requester: GetRequestService) { 
+  constructor(private requester: GetWeather) { 
     this.weatherInfo = {} as OpenMeteo;
   }
   
@@ -41,7 +41,7 @@ export class WeatherDataComponent implements OnInit {
 @Injectable({
   providedIn: 'root'
 })
-export class GetRequestService {
+export class GetWeather {
   location: GeocodingPain;
   coordinates: Results;
   private apiKey: string;
