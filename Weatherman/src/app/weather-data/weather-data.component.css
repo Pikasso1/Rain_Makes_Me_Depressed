@@ -82,23 +82,12 @@
     grid-column: 2;
     grid-row: 2;
     background-image: url("../../assets/Compass_360_(en).svg");
-    transform: scale(2);
+    transform: scale(3.5);
 }
-.sizeBox{
-    transform: scale(0.2);
-    
-}
-/*.winddirection > div > img {
-    height: 100px;
-}*/
 
 .windArrow {
     z-index: 2;
-    height: 100px;
-}
-.windCompass {
-    z-index: 1;
-    transform: scale(0.2);
+    height: 75px;
 }
 
 .animejsBox{
