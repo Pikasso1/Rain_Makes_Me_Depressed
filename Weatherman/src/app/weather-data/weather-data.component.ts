@@ -24,8 +24,15 @@ export class WeatherDataComponent implements OnInit {
       
       console.log(this.weatherInfo);
     })
+
+    
   }
   ngAfterViewChecked(): void {
+    var compass = document.querySelector("#windArrow") as HTMLElement | null;
+    if(compass != null){
+      compass.style.transform = 'rotate(' + this.weatherInfo.current_weather.winddirection + 'deg)';
+    }
+
     var box = document.querySelector("#animejsBox");
     console.log(box);
   }

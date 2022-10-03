@@ -17,18 +17,22 @@
 
     <div class="weatherDataGrid">
         <div class="temperature">
-            <p>Temperature: {{weatherInfo.current_weather.temperature}} °C</p>
+            <span>Temperature: {{weatherInfo.current_weather.temperature}} °C</span>
         </div>
         <div class="downfall">
-            <p>Current time: {{weatherInfo.current_weather.time}}</p>
+            <span>Current time: {{weatherInfo.current_weather.time}}</span>
         </div>
 
         <div class="windspeed">
-            <p>Windspeed: {{weatherInfo.current_weather.windspeed}} km/t</p>
+            <span>Windspeed: {{weatherInfo.current_weather.windspeed}} km/t</span>
         </div>
         <div class="winddirection">
+            <div class="sizeBox">
             <!-- WeatherCompass -->
-            <p>Winddirection: {{weatherInfo.current_weather.winddirection}}</p>
+            <!-- <span>Winddirection: {{weatherInfo.current_weather.winddirection}}</span> -->
+            <!-- <img src="./assets/Compass_360_(en).svg" class="windCompass"> -->
+            <img src="./assets/compass-up-arrow.svg" class="windArrow" id="windArrow">
+            </div>
         </div>
     </div>
 
