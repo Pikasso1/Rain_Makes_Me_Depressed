@@ -13,6 +13,6 @@ export interface GeocodingPain {
     [index: number]: Results; 
 }
 export interface Results {
-    latitude: number,
-    longitude: number
+    lat: string,
+    long: string
 }

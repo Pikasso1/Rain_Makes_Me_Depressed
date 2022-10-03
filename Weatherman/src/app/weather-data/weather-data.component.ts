@@ -44,23 +44,38 @@ export class WeatherDataComponent implements OnInit {
 export class GetRequestService {
   location: GeocodingPain;
   coordinates: Results;
+  private apiKey: string;
 
   constructor(private http: HttpClient) {
     this.location = {} as GeocodingPain;
     this.coordinates = {} as Results;
+    this.apiKey = "pk.531d2688dbad2f0c2b6c376ed8c34abc";
   }
 
   public getWeatherData(name: string): Observable<OpenMeteo> {
     let lat = 0;
     let long = 0;
 
-    //here
-    //getCoordinates() => lat long
+
+    this.getCoordinates(name).subscribe(response =>{
+      this.coordinates.lat = response[0].lat;
+      this.coordinates.long = response[0].lon;
+      console.log(response[0])
+    })
+    
+    console.log(this.coordinates);
+    lat = parseFloat(this.coordinates.lat);
+    long = parseFloat(this.coordinates.long);
+    console.log(lat + " " + long)
+
+    
 
     let queryParams = new HttpParams();
-    queryParams = queryParams.append("latitude", 50);
-    queryParams = queryParams.append("longitude", 50);
+    queryParams = queryParams.append("latitude", lat);
+    queryParams = queryParams.append("longitude", long);
     queryParams = queryParams = queryParams.append("current_weather",true);
+
+
 
     const url = "https://api.open-meteo.com/v1/forecast";
     const test = this.http.get<OpenMeteo>(url, {params:queryParams});
@@ -68,15 +83,21 @@ export class GetRequestService {
     return test;
   }
 
-  public getCoordinates(name: string): Observable<GeocodingPain> {
+  public getCoordinates(cityName: string): Observable<any> {
     let queryParams = new HttpParams();
-    queryParams = queryParams.append("name", name);
-    queryParams = queryParams.append("count", 1);
+    queryParams = queryParams.append("key", this.apiKey);
+    queryParams = queryParams.append("q", cityName);
+    queryParams = queryParams.append("limit", 1);
+    queryParams = queryParams.append("format", "JSON");
 
-    const url = "https://geocoding-api.open-meteo.com/v1/search";
+    const url = "https://eu1.locationiq.com/v1/search";
 
-    const test = this.http.get<GeocodingPain>(url, {params:queryParams});
-    console.log(test);
+    //queryParams = queryParams.append("name", name);
+    //queryParams = queryParams.append("count", 1);
+
+    //const geocodingurl = "https://geocoding-api.open-meteo.com/v1/search";
+
+    const test = this.http.get<any>(url, {params:queryParams});
     return test;
   }
 }
