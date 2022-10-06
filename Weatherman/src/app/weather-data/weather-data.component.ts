@@ -71,8 +71,8 @@ export class GetWeather {
     
 
     let queryParams = new HttpParams();
-    queryParams = queryParams.append("latitude", lat);
-    queryParams = queryParams.append("longitude", long);
+    queryParams = queryParams.append("latitude", 50);
+    queryParams = queryParams.append("longitude", 50);
     queryParams = queryParams = queryParams.append("current_weather",true);
 
 
