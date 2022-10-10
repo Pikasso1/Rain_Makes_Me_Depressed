@@ -4,6 +4,29 @@ import { Observable } from "rxjs"
 import { Results, GeocodingPain, OpenMeteo } from "./weather-information"
 import { FormControl } from '@angular/forms'; //fuck you, break everything like a fucking dipshit
 
+async function Coordinates(city: string) {
+  let api_url = 'https://geocoding-api.open-meteo.com/v1/search?name='
+  let response = await fetch(api_url + city);
+  const json = await response.json();
+  let WGS84_Coordinates = json.results[0];
+  
+  const coords = [0, 0];
+
+  coords[0] = WGS84_Coordinates.latitude;
+  coords[1] = WGS84_Coordinates.longitude;
+  
+  return coords
+}
+async function Temperature(city: string){
+  const coords = await Coordinates(city);
+    
+  let api_url = 'https://api.open-meteo.com/v1/forecast?latitude='
+  let response = await fetch(api_url + coords[0] + "&longitude=" + coords[1] + "&hourly=temperature_2m");
+  const WeatherData = await response.json();
+    
+    console.log(WeatherData);
+}
+
 @Component({
   selector: 'app-weather-data',
   templateUrl: './weather-data.component.html',
@@ -17,15 +40,15 @@ export class WeatherDataComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.requester.getWeatherData("Berlin").subscribe(response =>{
-      this.weatherInfo.latitude = response.latitude;
-      this.weatherInfo.longitude = response.longitude;
-      this.weatherInfo.current_weather = response.current_weather;
+    //this.requester.getWeatherData("Berlin").subscribe(response =>{
+      //this.weatherInfo.latitude = response.latitude;
+      //this.weatherInfo.longitude = response.longitude;
+      //this.weatherInfo.current_weather = response.current_weather;
       
-      console.log(this.weatherInfo);
-    })
+      //console.log(this.weatherInfo);
+    //})
 
-    
+    Temperature("Berlin");    
   }
   ngAfterViewChecked(): void {
     var compass = document.querySelector("#windArrow") as HTMLElement | null;
@@ -67,7 +90,6 @@ export class GetWeather {
     lat = parseFloat(this.coordinates.lat);
     long = parseFloat(this.coordinates.long);
     console.log(lat + " " + long)
-
     
 
     let queryParams = new HttpParams();
