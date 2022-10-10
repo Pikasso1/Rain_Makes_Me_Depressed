@@ -8,7 +8,7 @@
             <label for="time">Enter time for weatherforcast: </label>
             <input type="time" id="time" name="time">
         </div>
-        <button class="submitButton" type="submit" action="someshit">Get Weather</button>
+        <button class="submitButton" (click)="getWeatherButtonClicked()">Get Weather</button>
     </form>
             <!--
             Berlin or sum shit:   Latitude: {{weatherInfo.latitude}}  Longitude: {{weatherInfo.longitude}}
@@ -17,14 +17,14 @@
 
     <div class="weatherDataGrid">
         <div class="temperature">
-            <span>Temperature: {{weatherInfo.current_weather.temperature}} °C</span>
+            <span id="temp"></span>
         </div>
         <div class="downfall">
-            <span>Current time: {{weatherInfo.current_weather.time}}</span>
+            <span id="rain"></span>
         </div>
 
         <div class="windspeed">
-            <span>Windspeed: {{weatherInfo.current_weather.windspeed}} km/t</span>
+            <span id="windspeed"></span>
         </div>
         <div class="winddirection">
             <!-- WeatherCompass -->
@@ -33,8 +33,5 @@
             <img src="./assets/compass-up-arrow.svg" class="windArrow" id="windArrow">
         </div>
     </div>
-
-    <div class="animejsBox" id="animejsBox">here</div>
-
 </div>
 

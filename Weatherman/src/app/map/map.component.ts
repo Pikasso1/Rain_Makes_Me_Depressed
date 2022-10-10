@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { WeatherFromCoords, currentTimeUTC } from '../weather-data/weather-data.component';
 
 
 @Component({
@@ -49,6 +49,8 @@ export class MapComponent implements OnInit {
 
     //with from 0 to window.innerWidth * 2/5
     this.long = this.mapping(this.mouseX, 0, (window.innerWidth * 2/5), 7.5433, 15.461);
+
+    WeatherFromCoords(this.lat, this.long, currentTimeUTC());
 
     console.log(html.clientHeight *1/5)
     console.log(this.lat + ", " + this.long)

@@ -17,14 +17,73 @@ async function Coordinates(city: string) {
   
   return coords
 }
-async function Temperature(city: string){
+async function WeatherFromCity(city: string, time: string){
   const coords = await Coordinates(city);
     
   let api_url = 'https://api.open-meteo.com/v1/forecast?latitude='
-  let response = await fetch(api_url + coords[0] + "&longitude=" + coords[1] + "&hourly=temperature_2m");
+  let response = await fetch(api_url + coords[0] + "&longitude=" + coords[1] + "&hourly=temperature_2m" + "&hourly=precipitation" + "&hourly=windspeed_10m" + "&hourly=winddirection_10m");
   const WeatherData = await response.json();
-    
-    console.log(WeatherData);
+
+  const isEqualToTime = (element: string) => time == element
+
+  let index = WeatherData.hourly.time.findIndex(isEqualToTime);
+  let temperature = WeatherData.hourly.temperature_2m[index];
+  let precipitation = WeatherData.hourly.precipitation[index];
+  let windspeed = WeatherData.hourly.windspeed_10m[index];
+  let winddirection = WeatherData.hourly.winddirection_10m[index];
+
+  console.log(WeatherData.hourly.temperature_2m[index])
+
+  ChangeSpanText("temp", "Temperatur: " + temperature + " °C");
+  ChangeSpanText("rain", "Nedbør: " + precipitation + " mm");
+  ChangeSpanText("windspeed", "Vindhastighed: " + windspeed + " m/s");
+
+  //Weathercompass
+  var compass = document.querySelector("#windArrow") as HTMLElement | null;
+    if(compass != null){
+      compass.style.transform = 'rotate(' + winddirection + 'deg)';
+    }
+
+  console.log(WeatherData);
+}
+export async function WeatherFromCoords(lat: number, long: number, time: string){
+  let api_url = 'https://api.open-meteo.com/v1/forecast?latitude='
+  let response = await fetch(api_url + lat + "&longitude=" + long + "&hourly=temperature_2m" + "&hourly=precipitation" + "&hourly=windspeed_10m" + "&hourly=winddirection_10m");
+  const WeatherData = await response.json();
+
+  const isEqualToTime = (element: string) => time == element
+
+  let index = WeatherData.hourly.time.findIndex(isEqualToTime);
+  let temperature = WeatherData.hourly.temperature_2m[index];
+  let precipitation = WeatherData.hourly.precipitation[index];
+  let windspeed = WeatherData.hourly.windspeed_10m[index];
+  let winddirection = WeatherData.hourly.winddirection_10m[index];
+
+  console.log(WeatherData.hourly.temperature_2m[index])
+
+  ChangeSpanText("temp", "Temperatur: " + temperature + " °C");
+  ChangeSpanText("rain", "Nedbør: " + precipitation + " mm");
+  ChangeSpanText("windspeed", "Vindhastighed: " + windspeed + " km/t");
+
+  //Weathercompass
+  var compass = document.querySelector("#windArrow") as HTMLElement | null;
+    if(compass != null){
+      compass.style.transform = 'rotate(' + winddirection + 'deg)';
+    }
+
+  console.log(WeatherData);
+}
+export function currentTimeUTC(){
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var time = today.getHours() + ":00" 
+  return date + "T" + time;
+}
+function ChangeSpanText(id: string, text:string){
+  var currentItem = document.getElementById(id) as HTMLElement | null;
+  if(currentItem != null){
+    currentItem.textContent = text
+  }
 }
 
 @Component({
@@ -48,16 +107,22 @@ export class WeatherDataComponent implements OnInit {
       //console.log(this.weatherInfo);
     //})
 
-    Temperature("Berlin");    
+    
+        
   }
-  ngAfterViewChecked(): void {
-    var compass = document.querySelector("#windArrow") as HTMLElement | null;
-    if(compass != null){
-      compass.style.transform = 'rotate(' + this.weatherInfo.current_weather.winddirection + 'deg)';
-    }
+  ngAfterContentInit(): void {
+    WeatherFromCity("Berlin", currentTimeUTC());
+  }
+  getWeatherButtonClicked(){
+    const input1 = document.getElementById("city") as HTMLInputElement
+    const input2 = document.getElementById("time") as HTMLInputElement
 
-    var box = document.querySelector("#animejsBox");
-    console.log(box);
+    let city = input1?.value //Get city
+    
+    var today = new Date();
+    var time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + "T" + input2?.value;
+
+    WeatherFromCity(city, time);
   }
 }
 
@@ -90,7 +155,7 @@ export class GetWeather {
     lat = parseFloat(this.coordinates.lat);
     long = parseFloat(this.coordinates.long);
     console.log(lat + " " + long)
-    
+
 
     let queryParams = new HttpParams();
     queryParams = queryParams.append("latitude", 50);
