@@ -2,16 +2,17 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    gap: 5px;
+    gap: 1px;
 
     margin: auto;
     height: 100vh;
     width: 100vw;
     position: absolute;
+    background-color: black;
   }
 
   .layout > div {
-    background-color: rgb(255);
+    background-color: white;
 
   }
 
