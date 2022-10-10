@@ -17,18 +17,18 @@
   <div class="suggestionsFlexBox">
   <div class="textStuff">
     <div style="font-size: 37.5px">
-      Aktivitet navn
+      {{this.current_suggestionnavn[this.index]}}
     </div>
   
   
     <div>
-      <div class = p2>Her vil der stå noget forklarende tekst til hvordan aktiviteten foregår, hvor man burde være, hvad der skal bruges og så videre.</div>
+      <div class = p2>{{this.current_suggestion[this.index]}}</div>
     </div>
   </div>
   
 <div class="arrowsAndDifficulity">  
-  <div class="leftArrow">
-    <img class = "clickable" src = "./assets/SVG-Arrow-Icon.svg" style="transform:rotate(180deg);"/> 
+  <div class="leftArrow" (click)="buttonClicked(false)">
+    <img class = "clickable" src = "./assets/SVG-Arrow-Icon.svg" style="transform:rotate(180deg);" /> 
   </div>
 
 <div class="difficulity">
@@ -44,7 +44,7 @@
   <span class = "black"></span>
 </div>
 </div>
-<div class="right arrow">
+<div class="right arrow" (click)="buttonClicked(true)">
   <img class = "clickable" src = "./assets/SVG-Arrow-Icon.svg"/> 
 </div>
 </div>

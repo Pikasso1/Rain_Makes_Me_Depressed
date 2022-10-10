@@ -42,8 +42,6 @@ export class MapComponent implements OnInit {
 
     const html = document.getElementById("html")  as HTMLElement || null
 
-    console.log("Mouse X: " + this.mouseX + ", Mouse Y: " + this.mouseY)
-
     this.lat = this.mapping(this.mouseY, html.clientHeight, (html.clientHeight * 1/5), 54.4558, 58.003);
     this.lat += 0.05; //correcting term 
 
@@ -51,9 +49,6 @@ export class MapComponent implements OnInit {
     this.long = this.mapping(this.mouseX, 0, (window.innerWidth * 2/5), 7.5433, 15.461);
 
     WeatherFromCoords(this.lat, this.long, currentTimeUTC(0));
-
-    console.log(html.clientHeight *1/5)
-    console.log(this.lat + ", " + this.long)
   }
 
   mapping(value: number, in_min: number, in_max: number, out_min: number, out_max: number): number {

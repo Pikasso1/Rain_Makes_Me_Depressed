@@ -114,3 +114,7 @@
     background-color: brown;
     text-align: center;
 }
+
+.hiddenTemp {
+    opacity: 0;
+}

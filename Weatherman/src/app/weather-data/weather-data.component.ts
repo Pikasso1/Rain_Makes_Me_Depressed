@@ -1,6 +1,4 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from "rxjs"
 import { Results, GeocodingPain, OpenMeteo } from "./weather-information"
 import { FormControl } from '@angular/forms'; //fuck you, break everything like a fucking dipshit
 
@@ -32,8 +30,6 @@ async function WeatherFromCity(city: string, time: string){
   let windspeed = WeatherData.hourly.windspeed_10m[index];
   let winddirection = WeatherData.hourly.winddirection_10m[index];
 
-  console.log(WeatherData.hourly.temperature_2m[index])
-
   ChangeSpanText("temp", "Temperatur: " + temperature + " °C");
   ChangeSpanText("rain", "Nedbør: " + precipitation + " mm");
   ChangeSpanText("windspeed", "Vindhastighed: " + windspeed + " m/s");
@@ -51,7 +47,6 @@ async function WeatherFromCity(city: string, time: string){
 
 
     const currentItem = document.getElementById(date)  as HTMLElement | null;
-    console.log(currentItem)
     if(currentItem != null){
       const findIndex = (element: string) => dateTime == element
       let index = WeatherData.hourly.time.findIndex(findIndex);
@@ -61,8 +56,6 @@ async function WeatherFromCity(city: string, time: string){
       currentItem.textContent = temperature + " °C"
     }
   }
-
-  console.log(WeatherData);
 }
 export async function WeatherFromCoords(lat: number, long: number, time: string){
   let api_url = 'https://api.open-meteo.com/v1/forecast?latitude='
@@ -77,9 +70,8 @@ export async function WeatherFromCoords(lat: number, long: number, time: string)
   let windspeed = WeatherData.hourly.windspeed_10m[index];
   let winddirection = WeatherData.hourly.winddirection_10m[index];
 
-  console.log(WeatherData.hourly.temperature_2m[index])
-
   ChangeSpanText("temp", "Temperatur: " + temperature + " °C");
+  ChangeSpanText("hiddenTemp", temperature);
   ChangeSpanText("rain", "Nedbør: " + precipitation + " mm");
   ChangeSpanText("windspeed", "Vindhastighed: " + windspeed + " km/t");
 
@@ -90,7 +82,6 @@ export async function WeatherFromCoords(lat: number, long: number, time: string)
 
 
     const currentItem = document.getElementById(date)  as HTMLElement | null;
-    console.log(currentItem)
     if(currentItem != null){
       const findIndex = (element: string) => dateTime == element
       let index = WeatherData.hourly.time.findIndex(findIndex);
@@ -106,17 +97,12 @@ export async function WeatherFromCoords(lat: number, long: number, time: string)
     if(compass != null){
       compass.style.transform = 'rotate(' + winddirection + 'deg)';
     }
-
-  console.log(WeatherData);
 }
 export function currentTimeUTC(number: number){
   var today = new Date();
   var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + number);
   var time = today.getHours() + ":00" 
   return date + "T" + time;
-}
-function changeDates(WeatherData: JSON){
-
 }
 function ChangeSpanText(id: string, text:string){
   var currentItem = document.getElementById(id) as HTMLElement | null;
@@ -133,22 +119,11 @@ function ChangeSpanText(id: string, text:string){
 export class WeatherDataComponent implements OnInit {
   weatherInfo: OpenMeteo;
 
-  constructor(private requester: GetWeather) { 
+  constructor() { 
     this.weatherInfo = {} as OpenMeteo;
   }
   
-  ngOnInit(): void {
-    //this.requester.getWeatherData("Berlin").subscribe(response =>{
-      //this.weatherInfo.latitude = response.latitude;
-      //this.weatherInfo.longitude = response.longitude;
-      //this.weatherInfo.current_weather = response.current_weather;
-      
-      //console.log(this.weatherInfo);
-    //})
-
-    
-        
-  }
+  ngOnInit(): void {}
   ngAfterContentInit(): void {
     WeatherFromCity("Berlin", currentTimeUTC(0));
   }
@@ -164,71 +139,7 @@ export class WeatherDataComponent implements OnInit {
     charArray[14] = "0"
     charArray[15] = "0"
     time = charArray.join("")
-    console.log(charArray);
 
     WeatherFromCity(city, time);
-  }
-}
-
-@Injectable({
-  providedIn: 'root'
-})
-export class GetWeather {
-  location: GeocodingPain;
-  coordinates: Results;
-  private apiKey: string;
-
-  constructor(private http: HttpClient) {
-    this.location = {} as GeocodingPain;
-    this.coordinates = {} as Results;
-    this.apiKey = "pk.531d2688dbad2f0c2b6c376ed8c34abc";
-  }
-
-  public getWeatherData(name: string): Observable<OpenMeteo> {
-    let lat = 0;
-    let long = 0;
-
-
-    this.getCoordinates(name).subscribe(response =>{
-      this.coordinates.lat = response[0].lat;
-      this.coordinates.long = response[0].lon;
-      console.log(response[0])
-    })
-    
-    console.log(this.coordinates);
-    lat = parseFloat(this.coordinates.lat);
-    long = parseFloat(this.coordinates.long);
-    console.log(lat + " " + long)
-
-
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("latitude", 50);
-    queryParams = queryParams.append("longitude", 50);
-    queryParams = queryParams = queryParams.append("current_weather",true);
-
-
-
-    const url = "https://api.open-meteo.com/v1/forecast";
-    const test = this.http.get<OpenMeteo>(url, {params:queryParams});
-    console.log(test);
-    return test;
-  }
-
-  public getCoordinates(cityName: string): Observable<any> {
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("key", this.apiKey);
-    queryParams = queryParams.append("q", cityName);
-    queryParams = queryParams.append("limit", 1);
-    queryParams = queryParams.append("format", "JSON");
-
-    const url = "https://eu1.locationiq.com/v1/search";
-
-    //queryParams = queryParams.append("name", name);
-    //queryParams = queryParams.append("count", 1);
-
-    //const geocodingurl = "https://geocoding-api.open-meteo.com/v1/search";
-
-    const test = this.http.get<any>(url, {params:queryParams});
-    return test;
   }
 }
