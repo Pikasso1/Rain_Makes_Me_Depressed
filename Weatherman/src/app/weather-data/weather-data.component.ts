@@ -121,6 +121,11 @@ export class WeatherDataComponent implements OnInit {
     
     var today = new Date();
     var time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + "T" + input2?.value;
+    var charArray = time.split("")
+    charArray[14] = "0"
+    charArray[15] = "0"
+    time = charArray.join("")
+    console.log(charArray);
 
     WeatherFromCity(city, time);
   }
