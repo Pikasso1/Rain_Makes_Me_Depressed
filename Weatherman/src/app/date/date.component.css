@@ -40,6 +40,19 @@
 .datebox > div {
     margin: auto;
     padding: 10px;
+    height: 80%;
+}
+.datebox > div > button  {
+    width: 8.5vw;
+}
+.datebox > div > button > p {
+    margin: auto;
+    padding: 10px;
+    
+}
+.datebox > div > button > div {
+    margin: auto;
+    padding: 10px;
 }
 
 .weatherdate {

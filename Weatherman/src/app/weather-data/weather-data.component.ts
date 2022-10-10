@@ -43,6 +43,24 @@ async function WeatherFromCity(city: string, time: string){
     if(compass != null){
       compass.style.transform = 'rotate(' + winddirection + 'deg)';
     }
+  
+  //Changes dates
+  for(let i = 1; i < 8; i++){
+    let date = "date" + i.toString()
+    let dateTime = currentTimeUTC(i-1);
+
+
+    const currentItem = document.getElementById(date)  as HTMLElement | null;
+    console.log(currentItem)
+    if(currentItem != null){
+      const findIndex = (element: string) => dateTime == element
+      let index = WeatherData.hourly.time.findIndex(findIndex);
+      let temperature = WeatherData.hourly.temperature_2m[index];
+      //yyyy-mm-ddThh:00
+
+      currentItem.textContent = temperature + " °C"
+    }
+  }
 
   console.log(WeatherData);
 }
@@ -65,6 +83,24 @@ export async function WeatherFromCoords(lat: number, long: number, time: string)
   ChangeSpanText("rain", "Nedbør: " + precipitation + " mm");
   ChangeSpanText("windspeed", "Vindhastighed: " + windspeed + " km/t");
 
+  //Changes dates
+  for(let i = 1; i < 8; i++){
+    let date = "date" + i.toString()
+    let dateTime = currentTimeUTC(i-1);
+
+
+    const currentItem = document.getElementById(date)  as HTMLElement | null;
+    console.log(currentItem)
+    if(currentItem != null){
+      const findIndex = (element: string) => dateTime == element
+      let index = WeatherData.hourly.time.findIndex(findIndex);
+      let temperature = WeatherData.hourly.temperature_2m[index];
+      //yyyy-mm-ddThh:00
+
+      currentItem.textContent = temperature + " °C"
+    }
+  }
+
   //Weathercompass
   var compass = document.querySelector("#windArrow") as HTMLElement | null;
     if(compass != null){
@@ -73,11 +109,14 @@ export async function WeatherFromCoords(lat: number, long: number, time: string)
 
   console.log(WeatherData);
 }
-export function currentTimeUTC(){
+export function currentTimeUTC(number: number){
   var today = new Date();
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + number);
   var time = today.getHours() + ":00" 
   return date + "T" + time;
+}
+function changeDates(WeatherData: JSON){
+
 }
 function ChangeSpanText(id: string, text:string){
   var currentItem = document.getElementById(id) as HTMLElement | null;
@@ -111,7 +150,7 @@ export class WeatherDataComponent implements OnInit {
         
   }
   ngAfterContentInit(): void {
-    WeatherFromCity("Berlin", currentTimeUTC());
+    WeatherFromCity("Berlin", currentTimeUTC(0));
   }
   getWeatherButtonClicked(){
     const input1 = document.getElementById("city") as HTMLInputElement

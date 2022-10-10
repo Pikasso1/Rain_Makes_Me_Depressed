@@ -50,7 +50,7 @@ export class MapComponent implements OnInit {
     //with from 0 to window.innerWidth * 2/5
     this.long = this.mapping(this.mouseX, 0, (window.innerWidth * 2/5), 7.5433, 15.461);
 
-    WeatherFromCoords(this.lat, this.long, currentTimeUTC());
+    WeatherFromCoords(this.lat, this.long, currentTimeUTC(0));
 
     console.log(html.clientHeight *1/5)
     console.log(this.lat + ", " + this.long)
