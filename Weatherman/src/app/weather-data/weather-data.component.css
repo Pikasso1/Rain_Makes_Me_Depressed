@@ -48,7 +48,7 @@
 }
 
 .searchField > div {
-    background-color: aqua;
+    background-color: rgb(255);
     margin: auto;
     padding: 10px;
 }
@@ -60,20 +60,20 @@
 }
 
 .temperature {
-    background-color: aquamarine;
+    background-color: rgb(255);
     grid-column: 1;
     grid-row: 1;
 }
 
 .downfall {
-    background-color: aquamarine;
+    background-color: rgb(255);
     grid-column: 2;
     grid-row: 1;
 }
 
 
 .windspeed {
-    background-color: aquamarine;
+    background-color: rgb(255);
     grid-column: 1;
     grid-row: 2;
 }
