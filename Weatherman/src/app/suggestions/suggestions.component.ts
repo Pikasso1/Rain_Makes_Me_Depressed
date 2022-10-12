@@ -41,17 +41,21 @@ export class SuggestionsComponent implements OnInit {
       this.index--
     }
     
-    //make sure index always is between 0-5
+    //gets the suggestion to loop over
+    if(this.index > 5) {
+      //makes the index 6 into index into 0
+      this.index -= 6 
+    } else if (this.index < 0){
+      //makes the index -1 into 5
+      this.index += 6
+    }
 
-    console.log(this.index)
+    
+    //changes the suggestions
+    var temp = document.getElementById("hiddenTemp")
 
-    var temp = document.getElementById("#hiddenTemp")?.innerText
-
-
-    //Doesnt change the current_whatever array
     if(temp != null){
-    if(parseFloat(temp) > 15){
-      console.log("good")
+    if(parseFloat(temp.innerText) > 15){
       this.current_suggestionnavn[0] = "Løbetur";
       this.current_suggestionnavn[1] = "Gåtur";
       this.current_suggestionnavn[2] = "Picnic";
@@ -68,7 +72,6 @@ export class SuggestionsComponent implements OnInit {
     } 
     else
     {
-      console.log("bad")
       this.current_suggestionnavn[0] = "Lyft vægte";
       this.current_suggestionnavn[1] = "Biograf";
       this.current_suggestionnavn[2] = "Gaming";

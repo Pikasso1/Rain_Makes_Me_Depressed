@@ -22,6 +22,8 @@ async function WeatherFromCity(city: string, time: string){
   let response = await fetch(api_url + coords[0] + "&longitude=" + coords[1] + "&hourly=temperature_2m" + "&hourly=precipitation" + "&hourly=windspeed_10m" + "&hourly=winddirection_10m");
   const WeatherData = await response.json();
 
+  console.log(WeatherData);
+
   const isEqualToTime = (element: string) => time == element
 
   let index = WeatherData.hourly.time.findIndex(isEqualToTime);
@@ -62,9 +64,12 @@ export async function WeatherFromCoords(lat: number, long: number, time: string)
   let response = await fetch(api_url + lat + "&longitude=" + long + "&hourly=temperature_2m" + "&hourly=precipitation" + "&hourly=windspeed_10m" + "&hourly=winddirection_10m");
   const WeatherData = await response.json();
 
+  console.log(WeatherData);
+
   const isEqualToTime = (element: string) => time == element
 
   let index = WeatherData.hourly.time.findIndex(isEqualToTime);
+  console.log(index)
   let temperature = WeatherData.hourly.temperature_2m[index];
   let precipitation = WeatherData.hourly.precipitation[index];
   let windspeed = WeatherData.hourly.windspeed_10m[index];
@@ -101,7 +106,14 @@ export async function WeatherFromCoords(lat: number, long: number, time: string)
 export function currentTimeUTC(number: number){
   var today = new Date();
   var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + number);
-  var time = today.getHours() + ":00" 
+  var time = today.getHours() + ":00"
+
+  //If its 8am then itll return 8:00 
+  //api requires it says 08:00
+  if(time.length < 5){
+    time = "0" + time
+  }
+  
   return date + "T" + time;
 }
 function ChangeSpanText(id: string, text:string){
@@ -125,6 +137,7 @@ export class WeatherDataComponent implements OnInit {
   
   ngOnInit(): void {}
   ngAfterContentInit(): void {
+    console.log(currentTimeUTC(0))
     WeatherFromCity("Berlin", currentTimeUTC(0));
   }
   getWeatherButtonClicked(){
