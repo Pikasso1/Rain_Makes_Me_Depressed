@@ -72,7 +72,7 @@ export class SuggestionsComponent implements OnInit {
     } 
     else
     {
-      this.current_suggestionnavn[0] = "Luft vægte";
+      this.current_suggestionnavn[0] = "Løft vægte";
       this.current_suggestionnavn[1] = "Biograf";
       this.current_suggestionnavn[2] = "Gaming";
       this.current_suggestionnavn[3] = "Bræt eller kortspil";
