@@ -1,14 +1,14 @@
 <div class="datagrid">
     <form class="searchField" action="">
         <div class="inputCity">
-            <label for="city">City Name</label>
+            <label for="city">Vælg by: </label>
             <input type="city" id="city" name="city">
         </div>
         <div class="inputTime">
-            <label for="time">Enter time for weatherforcast: </label>
+            <label for="time">Vælg tidspunkt: </label>
             <input type="time" id="time" name="time">
         </div>
-        <button class="submitButton" (click)="getWeatherButtonClicked()">Get Weather</button>
+        <button class="submitButton" (click)="getWeatherButtonClicked()">Find Vejret</button>
     </form>
             <!--
             Berlin or sum shit:   Latitude: {{weatherInfo.latitude}}  Longitude: {{weatherInfo.longitude}}
@@ -20,6 +20,9 @@
 
     <div class="weatherDataGrid">
         <div class="weatherInfo">
+            <div>
+                <span id="by"></span>
+            </div>
             <div>
                 <span id="temp"></span>
             </div>

@@ -22,7 +22,6 @@ async function WeatherFromCity(city: string, time: string){
   let response = await fetch(api_url + coords[0] + "&longitude=" + coords[1] + "&hourly=temperature_2m" + "&hourly=precipitation" + "&hourly=windspeed_10m" + "&hourly=winddirection_10m");
   const WeatherData = await response.json();
 
-  console.log(WeatherData);
 
   const isEqualToTime = (element: string) => time == element
 
@@ -32,6 +31,7 @@ async function WeatherFromCity(city: string, time: string){
   let windspeed = WeatherData.hourly.windspeed_10m[index];
   let winddirection = WeatherData.hourly.winddirection_10m[index];
 
+  ChangeSpanText("by", "Valgte by: " + city);
   ChangeSpanText("temp", "Temperatur: " + temperature + " °C");
   ChangeSpanText("rain", "Nedbør: " + precipitation + " mm");
   ChangeSpanText("windspeed", "Vindhastighed: " + windspeed + " m/s");
@@ -64,17 +64,15 @@ export async function WeatherFromCoords(lat: number, long: number, time: string)
   let response = await fetch(api_url + lat + "&longitude=" + long + "&hourly=temperature_2m" + "&hourly=precipitation" + "&hourly=windspeed_10m" + "&hourly=winddirection_10m");
   const WeatherData = await response.json();
 
-  console.log(WeatherData);
 
   const isEqualToTime = (element: string) => time == element
 
   let index = WeatherData.hourly.time.findIndex(isEqualToTime);
-  console.log(index)
   let temperature = WeatherData.hourly.temperature_2m[index];
   let precipitation = WeatherData.hourly.precipitation[index];
   let windspeed = WeatherData.hourly.windspeed_10m[index];
   let winddirection = WeatherData.hourly.winddirection_10m[index];
-
+  
   ChangeSpanText("temp", "Temperatur: " + temperature + " °C");
   ChangeSpanText("hiddenTemp", temperature);
   ChangeSpanText("rain", "Nedbør: " + precipitation + " mm");
@@ -137,22 +135,27 @@ export class WeatherDataComponent implements OnInit {
   
   ngOnInit(): void {}
   ngAfterContentInit(): void {
-    console.log(currentTimeUTC(0))
-    WeatherFromCity("Berlin", currentTimeUTC(0));
+    WeatherFromCity("København", currentTimeUTC(0));
   }
   getWeatherButtonClicked(){
     const input1 = document.getElementById("city") as HTMLInputElement
     const input2 = document.getElementById("time") as HTMLInputElement
 
     let city = input1?.value //Get city
-    
+    var time = ""
+
+    if(input2.value != ""){
     var today = new Date();
-    var time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + "T" + input2?.value;
+    time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + "T" + input2?.value;
     var charArray = time.split("")
     charArray[14] = "0"
     charArray[15] = "0"
     time = charArray.join("")
+    } else {
+      time = currentTimeUTC(0)
+    }
 
+    
     WeatherFromCity(city, time);
   }
 }

@@ -51,12 +51,14 @@
     background-color: rgb(255);
     margin: auto;
     padding: 10px;
+    transform:scale(1.5);
 }
 
 .submitButton {
     margin-right: 30px; 
     height: 50%;
     align-self: center;
+    transform:scale(1.5);
 }
 
 .temperature {
