@@ -82,9 +82,6 @@ fullDate: string[];
       console.log(city + "  " + currentTimeUTC(number))
       WeatherFromCity(city, currentTimeUTC(number), false)
     }
-    
-
-    
   }
 
 }
