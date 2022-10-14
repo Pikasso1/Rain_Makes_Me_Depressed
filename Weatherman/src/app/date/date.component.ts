@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { WeatherFromCity, currentTimeUTC } from '../weather-data/weather-data.component';
 @Component({
   selector: 'app-date',
   templateUrl: './date.component.html',
@@ -72,6 +72,19 @@ fullDate: string[];
       }
       this.fullDate[i] = `${currentDay} d. ${currentDate}`;
     }
+  }
+  
+  dateClicked(number: number){
+    const temp = document.getElementById("by") as HTMLElement | null
+
+    if(temp?.textContent != null){
+      let city = temp.textContent.substring(11);
+      console.log(city + "  " + currentTimeUTC(number))
+      WeatherFromCity(city, currentTimeUTC(number), false)
+    }
+    
+
+    
   }
 
 }

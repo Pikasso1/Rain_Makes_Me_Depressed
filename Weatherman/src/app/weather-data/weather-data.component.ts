@@ -15,7 +15,7 @@ async function Coordinates(city: string) {
   
   return coords
 }
-async function WeatherFromCity(city: string, time: string){
+export async function WeatherFromCity(city: string, time: string, changeDates: Boolean){
   const coords = await Coordinates(city);
     
   let api_url = 'https://api.open-meteo.com/v1/forecast?latitude='
@@ -42,6 +42,7 @@ async function WeatherFromCity(city: string, time: string){
       compass.style.transform = 'rotate(' + winddirection + 'deg)';
     }
   
+  if(changeDates){
   //Changes dates
   for(let i = 1; i < 8; i++){
     let date = "date" + i.toString()
@@ -57,6 +58,7 @@ async function WeatherFromCity(city: string, time: string){
 
       currentItem.textContent = temperature + " °C"
     }
+  }
   }
 }
 export async function WeatherFromCoords(lat: number, long: number, time: string){
@@ -135,7 +137,7 @@ export class WeatherDataComponent implements OnInit {
   
   ngOnInit(): void {}
   ngAfterContentInit(): void {
-    WeatherFromCity("København", currentTimeUTC(0));
+    WeatherFromCity("København", currentTimeUTC(0), true);
   }
   getWeatherButtonClicked(){
     const input1 = document.getElementById("city") as HTMLInputElement
@@ -156,6 +158,6 @@ export class WeatherDataComponent implements OnInit {
     }
 
     
-    WeatherFromCity(city, time);
+    WeatherFromCity(city, time, true);
   }
 }

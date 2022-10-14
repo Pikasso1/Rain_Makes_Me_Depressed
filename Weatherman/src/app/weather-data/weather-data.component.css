@@ -107,7 +107,7 @@
     grid-column: 2;
     grid-row: 1/3;
     background-image: url("../../assets/Compass_360_(en).svg");
-    transform: scale(4);
+    transform: scale(3);
 }
 
 .windArrow {
